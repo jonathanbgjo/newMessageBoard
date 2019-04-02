@@ -1,0 +1,38 @@
+<html>
+    <head>
+    </head>
+    <body>
+    <h1>POST AND COMMENTS B</h1>
+        <form action='/post' method='post'>
+              <input type='text' name = 'name' placeholder = "name"><br>
+              <textarea name = 'text' cols = 50 rows = 5placeholder = "post here"></textarea><br>
+            <input type='submit'  value='Post Message!'>
+
+        </form>
+<hr>
+
+    <% for(let x =0; x < posts.length; x++){%>
+        <p>Name: <%=posts[x].name%>
+        <p>"<%=posts[x].text%>"</p>
+
+        <% for(let y =0; y < posts[x].comments.length; y++){%>
+            <span style="padding-left: 20px; display:block">
+            <p> ---------Comment # <%=y +1%>--------- </p>
+            <p> Name: </p>
+            <p><%=posts[x].comments[y].comment%>
+            <p>"<%=posts[x].comments[y].name%>"</p>
+            </span>
+            
+        <%}%><hr>
+            <form action='/comment/<%=posts[x]._id%>' method='post'>
+                      <input type='text' name = 'name' placeholder = "name"><br>
+                      <textarea name = 'text' placeholder = "comment here"></textarea><br>
+                    <input type='submit'  value='Post Comment!'>
+            </form> <hr>
+    <%}%> 
+
+
+
+
+    </body>
+</html> 
